@@ -1,5 +1,4 @@
 ---
-hcloud-token: So2enL418sU9ELSUkAw9t6LcTjjxfZqp38uTtJx465EgU6N0x4Ghn6VXs3Suntc7
 # max-keep: 2
 stack:
   name: test
