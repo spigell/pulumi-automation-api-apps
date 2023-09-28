@@ -2,6 +2,9 @@ package cmd
 
 import (
 	"log"
+	"fmt"
+	"github.com/spigell/pulumi-automation-api-apps/common/version"
+
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -13,7 +16,16 @@ var (
 		Use:   "hetzner-snapshot-manager",
 		Short: "manage snapshots based on pulumi preview events",
 	}
+	versionCmd = &cobra.Command{
+		Use:   "version",
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println(version.Get())
+		},
+	}
 )
+
+
+
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
@@ -23,8 +35,6 @@ func Execute() {
 
 func init() {
 	viper.AutomaticEnv()
-	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "/path/to/file for config. Required")
-	rootCmd.MarkPersistentFlagRequired("config")
 	rootCmd.PersistentFlags().String("hcloud-token", "", "Hetzner Cloud token")
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "verbose")
 	rootCmd.PersistentFlags().BoolP("diff", "d", false, "Enable the diff option for pulumi command")
@@ -39,7 +49,7 @@ func init() {
 	viper.BindPFlag("api-server-port", rootCmd.PersistentFlags().Lookup("api-server-port"))
 	viper.BindPFlag("max-keep", rootCmd.PersistentFlags().Lookup("cleaner-max-keep"))
 
-	cobra.OnInitialize(initConfig)
+	rootCmd.AddCommand(versionCmd)
 }
 
 func initConfig() {

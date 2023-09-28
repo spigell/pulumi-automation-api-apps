@@ -14,6 +14,7 @@ var preCmd = &cobra.Command{
 	Use:   "pre",
 	Short: "The 'pre' only make preview",
 	Run: func(cmd *cobra.Command, args []string) {
+		initConfig()
 		ctx := context.Background()
 		m, err := manager.New(ctx, "preview")
 		if err != nil {
@@ -27,5 +28,7 @@ var preCmd = &cobra.Command{
 }
 
 func init() {
+	preCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "config.yaml", "/path/to/file for config. Required")
+	preCmd.MarkPersistentFlagRequired("config")
 	rootCmd.AddCommand(preCmd)
 }

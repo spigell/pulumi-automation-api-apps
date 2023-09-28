@@ -2,7 +2,7 @@ module github.com/spigell/pulumi-automation-api-apps/hetzner-snaphots-manager/sd
 
 go 1.21.0
 
-require github.com/spigell/pulumi-automation-api-apps v0.0.0-00010101000000-000000000000
+require github.com/spigell/pulumi-automation-api-apps v0.0.0-20230928180127-ecb277fa99bc
 
 require (
 	dario.cat/mergo v1.0.0 // indirect

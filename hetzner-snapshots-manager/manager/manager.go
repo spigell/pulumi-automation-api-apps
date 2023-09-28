@@ -104,7 +104,7 @@ func (m *Manager) ProcessEvents(events []events.EngineEvent) error {
 						return nil
 					}()
 
-				case m.Runner.GetMode() == "destroy":
+				case m.Runner.GetMode() == "destroy" && metadata.Op != "create":
 					wg.Add(1)
 					go func() error {
 						err = m.processServerDeletion(metadata.Old.URN)

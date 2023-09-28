@@ -14,6 +14,7 @@ var upCmd = &cobra.Command{
 	Use:   "up",
 	Short: "The 'up' command runs pulumi",
 	Run: func(cmd *cobra.Command, args []string) {
+		initConfig()
 		ctx := context.Background()
 		m, err := manager.New(ctx, "up")
 		if err != nil {
@@ -27,5 +28,7 @@ var upCmd = &cobra.Command{
 }
 
 func init() {
+	upCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "config.yaml", "Configuration file. Required")
+	upCmd.MarkPersistentFlagRequired("config")
 	rootCmd.AddCommand(upCmd)
 }

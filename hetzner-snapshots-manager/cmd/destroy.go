@@ -14,6 +14,7 @@ var destroyCmd = &cobra.Command{
 	Use:   "destroy",
 	Short: "The 'destroy' command destroy pulumi stack",
 	Run: func(cmd *cobra.Command, args []string) {
+		initConfig()
 		ctx := context.Background()
 		m, err := manager.New(ctx, "destroy")
 		if err != nil {
@@ -27,5 +28,7 @@ var destroyCmd = &cobra.Command{
 }
 
 func init() {
+	destroyCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "config.yaml", "/path/to/file for config. Required")
+	destroyCmd.MarkPersistentFlagRequired("config")
 	rootCmd.AddCommand(destroyCmd)
 }
