@@ -1,0 +1,4 @@
+config:
+  hetzner-manager-example:machines:
+    - id: server01
+    - id: server02
