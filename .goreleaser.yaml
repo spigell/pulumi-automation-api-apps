@@ -1,0 +1,22 @@
+archives:
+  - id: archive
+    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+builds:
+  - binary: hetzner-snapshot-manager
+    dir: hetzner-snapshot-manager
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    goarch:
+      - amd64
+      - arm64
+    goos:
+      - darwin
+      - windows
+      - linux
+    ldflags:
+      - -X github.com/spigell/pulumi-automation-api-apps/common/version.Version={{.Tag}}
+changelog:
+  use: github
+snapshot:
+  name_template: '{{ .Tag }}-SNAPSHOT'
