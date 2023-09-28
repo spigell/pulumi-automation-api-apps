@@ -2,8 +2,8 @@ archives:
   - id: archive
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
 builds:
-  - binary: hetzner-snapshot-manager
-    dir: hetzner-snapshot-manager
+  - binary: hetzner-snapshots-manager
+    dir: hetzner-snapshots-manager
     env:
       - CGO_ENABLED=0
       - GO111MODULE=on
