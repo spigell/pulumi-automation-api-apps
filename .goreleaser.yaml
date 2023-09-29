@@ -19,6 +19,6 @@ builds:
 changelog:
   use: github
 release:
-  skip_upload: true
+  disable: false
 snapshot:
   name_template: '{{ .Tag }}-SNAPSHOT'
