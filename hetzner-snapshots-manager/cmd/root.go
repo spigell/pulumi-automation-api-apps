@@ -1,10 +1,10 @@
 package cmd
 
 import (
-	"log"
 	"fmt"
-	"github.com/spigell/pulumi-automation-api-apps/common/version"
+	"log"
 
+	"github.com/spigell/pulumi-automation-api-apps/common/version"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -17,15 +17,12 @@ var (
 		Short: "manage snapshots based on pulumi preview events",
 	}
 	versionCmd = &cobra.Command{
-		Use:   "version",
+		Use: "version",
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println(version.Get())
 		},
 	}
 )
-
-
-
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {

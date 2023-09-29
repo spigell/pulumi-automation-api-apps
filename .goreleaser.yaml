@@ -18,5 +18,7 @@ builds:
       - -X github.com/spigell/pulumi-automation-api-apps/common/version.Version={{.Tag}}
 changelog:
   use: github
+release:
+  skip_upload: true
 snapshot:
   name_template: '{{ .Tag }}-SNAPSHOT'

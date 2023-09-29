@@ -11,17 +11,16 @@ import (
 )
 
 const (
-	// EnvAutomaionAPIAddr is an environment variable name for API server address
-	// gosec G101
-	EnvAutomaionAPIAddr = "AUTOMATION_API_HTTP_ADDR"
+	// EnvAutomaionAPIAddr is an environment variable name for API server address.
+	EnvAutomaionAPIAddr = "AUTOMATION_API_HTTP_ADDR" //nolint: gosec // This is not credentials
 )
 
 type Pulumi struct {
-	mode string
+	mode   string
 	stack  auto.Stack
 	logger *zap.Logger
 	ctx    context.Context
-	diff bool
+	diff   bool
 }
 
 func New(ctx context.Context, logger *zap.Logger, name, workDir, command string, diff bool) (*Pulumi, error) {
@@ -37,7 +36,7 @@ func New(ctx context.Context, logger *zap.Logger, name, workDir, command string,
 		stack:  selected,
 		logger: logger,
 		ctx:    ctx,
-		diff: diff,
+		diff:   diff,
 	}, nil
 }
 
