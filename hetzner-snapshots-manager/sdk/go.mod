@@ -1,4 +1,4 @@
-module github.com/spigell/pulumi-automation-api-apps/hetzner-snaphots-manager/sdk
+module github.com/spigell/pulumi-automation-api-apps/hetzner-snapshots-manager/sdk
 
 go 1.21.0
 
